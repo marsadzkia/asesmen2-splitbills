@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Split-Bill</string>
+    <string name="teks_sbill">Menurut Undang-Undang No. 7 Tahun 2021 tentang Harmonisasi Peraturan
+        Perpajakan, mulai 1 April 2022 PPN atau Pajak Pertambahan Nilai akan naik menjadi 11% </string>
+    <string name="teks_sbill2">Yuk split bill! ^^</string>
+    <string name="berapa_org">Jumlah orang</string>
+    <string name="orang_invalid">Jumlah orang invalid.</string>
+    <string name="tagihan_invalid">Input tagihan invalid.</string>
+    <string name="pajak_invalid">Input pajak invalid.</string>
+    <string name="tagihan">Jumlah Tagihan</string>
+    <string name="pajak">Termasuk Pajak ?</string>
+    <string name="rbutton1">Sudah</string>
+    <string name="rbutton2">Belum</string>
+    <string name="hitung_button">Hitung</string>
+    <string name="batal_button">Batal</string>
+    <string name="total_tagihan">Harga : %1$s</string>
+    <string name="tagihan_perorang">Patungan : %1$s</string>
+</resources>
