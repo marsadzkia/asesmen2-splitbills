@@ -1,27 +1,31 @@
-package org.d3if2107.splitbill.ui
+package org.d3if2107.splitbill.ui.main
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import org.d3if2107.splitbill.R
 import org.d3if2107.splitbill.databinding.FragmentMainBinding
+import org.d3if2107.splitbill.db.SplitBillsDb
 import org.d3if2107.splitbill.model.JumlahTagihan
 
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
 
     private val viewModel: MainViewModel by lazy {
-        ViewModelProvider(requireActivity())[MainViewModel::class.java]
+        val db = SplitBillsDb.getInstance(requireContext())
+        val factory = MainViewModelFactory(db.dao)
+        ViewModelProvider(this, factory)[MainViewModel::class.java]
     }
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         binding = FragmentMainBinding.inflate(layoutInflater, container, false)
+        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -36,6 +40,24 @@ class MainFragment : Fragment() {
             binding.patunganTextView.text=""
         }
         viewModel.getJumlahTagihan().observe(requireActivity(), { lihatHasil (it) })
+        viewModel.data.observe(viewLifecycleOwner, {
+            if (it == null) return@observe
+            Log.d("MainFragment", "Data tersimpan. ID = ${it.id}")
+        })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.options_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.history_menu) {
+            findNavController().navigate(
+                R.id.action_mainFragment_to_historyFragment)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun splitBill() {
