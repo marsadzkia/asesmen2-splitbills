@@ -1,4 +1,4 @@
-package org.d3if2107.splitbill
+package org.d3if2107.splitbill.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,7 +11,7 @@ class MainViewModel : ViewModel() {
 
     fun hitungPatungan(jmlhOrang: Int, tagihan: Int) {
         val jmlhOrgF = jmlhOrang.toFloat()
-        val ppn = tagihan.toFloat() * 11 / 100
+        val ppn = tagihan.toFloat() * (11 / 100)
         val patungan = ((tagihan.toFloat() + ppn) / jmlhOrgF).toString()
         jumlahTagihan.value = JumlahTagihan(patungan)
     }
