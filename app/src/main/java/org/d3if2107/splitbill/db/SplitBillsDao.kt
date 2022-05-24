@@ -10,6 +10,9 @@ interface SplitBillsDao {
     @Insert
     fun insert(splitbills: SplitBillsEntity)
 
-    @Query("SELECT * FROM `split bills` ORDER BY id DESC LIMIT 1")
-    fun getLastData(): LiveData<SplitBillsEntity?>
+    @Query("SELECT * FROM `split bills` ORDER BY id DESC")
+    fun getLastData(): LiveData<List<SplitBillsEntity>>
+
+    @Query("DELETE FROM `split bills`")
+    fun clearData()
 }

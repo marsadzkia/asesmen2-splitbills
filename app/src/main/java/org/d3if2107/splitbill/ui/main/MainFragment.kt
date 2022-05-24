@@ -40,10 +40,6 @@ class MainFragment : Fragment() {
             binding.patunganTextView.text=""
         }
         viewModel.getJumlahTagihan().observe(requireActivity(), { lihatHasil (it) })
-        viewModel.data.observe(viewLifecycleOwner, {
-            if (it == null) return@observe
-            Log.d("MainFragment", "Data tersimpan. ID = ${it.id}")
-        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

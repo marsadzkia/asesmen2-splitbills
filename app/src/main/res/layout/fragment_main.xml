@@ -49,6 +49,7 @@
             app:layout_constraintTop_toBottomOf="@+id/jumlahOrangTextView">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/totalBillInp"
+                android:fontFamily="@font/alegreya_sans_medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/tagihan"/>
