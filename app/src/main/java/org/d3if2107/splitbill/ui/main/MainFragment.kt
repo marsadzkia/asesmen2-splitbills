@@ -2,11 +2,12 @@ package org.d3if2107.splitbill.ui.main
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.*
 import android.widget.Toast
+import android.content.Intent
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import org.d3if2107.splitbill.R
 import org.d3if2107.splitbill.databinding.FragmentMainBinding
@@ -38,6 +39,10 @@ class MainFragment : Fragment() {
             binding.radioGroup.clearCheck()
             binding.totalBillTextView.text=""
             binding.patunganTextView.text=""
+        }
+        binding.shareButton.setOnClickListener { shareData() }
+        binding.infoappButton.setOnClickListener {
+            it.findNavController().navigate(R.id.action_mainFragment_to_aboutFragment)
         }
         viewModel.getJumlahTagihan().observe(requireActivity(), { lihatHasil (it) })
     }
@@ -81,5 +86,18 @@ class MainFragment : Fragment() {
     private fun lihatHasil(result: JumlahTagihan?) {
         if (result == null) return
         binding.patunganTextView.text = getString(R.string.tagihan_perorang, result.patungan)
+        binding.shareButton.visibility = View.VISIBLE
+    }
+
+    private fun shareData() {
+        val message = getString(R.string.share_template,
+            binding.patunganTextView)
+
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.setType("text/plain").putExtra(Intent.EXTRA_TEXT, message)
+        if (shareIntent.resolveActivity(
+                requireActivity().packageManager) != null) {
+            startActivity(shareIntent)
+        }
     }
 }

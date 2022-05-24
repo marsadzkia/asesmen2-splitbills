@@ -13,10 +13,17 @@
         <action
             android:id="@+id/action_mainFragment_to_historyFragment"
             app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
         android:name="org.d3if2107.splitbill.ui.histori.HistoryFragment"
         android:label="@string/history"
         tools:layout="@layout/fragment_history"/>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="org.d3if2107.splitbill.ui.about.AboutFragment"
+        android:label="@string/about_app" />
 </navigation>

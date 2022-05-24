@@ -23,4 +23,11 @@
     <string name="batal">Batal</string>
     <string name="data_orang">Jumlah Orang: %1$s.1f</string>
     <string name="data_tagihan">Jumlah Tagihan: %1$s.2f </string>
+    <string name="share_button">Bagikan ke yang lain</string>
+    <string name="about_app">Tentang Aplikasi</string>
+    <string name="about_text">Split Bill merupakan aplikasi untuk memudahkan orang-orang
+        yang butuh patungan (biasanya yang sedang berkumpul), dengan membagi rata dari
+        total uang yang dikeluarkan untuk membayar bill atau tagihan yang dikalkulasikan
+        dengan tarif PPN atau Pajak Pertambahan Nilai</string>
+    <string name="share_template">Patungan per orang: Rp %1$s </string>
 </resources>
